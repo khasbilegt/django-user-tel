@@ -47,7 +47,7 @@ jobs:
         run: poetry install
 
       - name: Run tests
-        run: poetry run nox -e test
+        run: poetry run nox --no-venv -e test
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
