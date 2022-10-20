@@ -42,7 +42,7 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    tel = models.CharField(unique=True)
+    tel = models.CharField(max_length=8, unique=True)
     name = models.CharField(max_length=60)
     is_active = models.BooleanField(default=False, db_index=True)
     is_staff = models.BooleanField(default=False)
