@@ -69,13 +69,13 @@ include = [
 [tool.poetry.dependencies]
 python = "^3.8"
 
-[tool.poetry.dev-dependencies]
-factory-boy = "^3.2.0"
-black = "^22.1.0"
-flake8 = "^4.0.1"
+[tool.poetry.group.dev.dependencies]
+factory-boy = "^3.2.1"
+black = "^22.10.0"
+flake8 = "^5.0.4"
 isort = "^5.10.1"
-coverage = {extras = ["toml"], version = "^5.5"}
-nox = "^2021.6.12"
+coverage = {extras = ["toml"], version = "^6.5.0"}
+nox = "^2022.8.7"
 
 
 [build-system]
