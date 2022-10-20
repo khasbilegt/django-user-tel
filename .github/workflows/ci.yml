@@ -34,14 +34,14 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
+      - name: Install poetry
+        run: pipx install poetry
+
       - name: Set up python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
           cache: "poetry"
-
-      - name: Install poetry
-        run: pipx install poetry
 
       - name: Install Poetry dependencies
         run: poetry install
