@@ -7,17 +7,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: Install poetry
+        run: pipx install poetry
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.8
-
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-        with:
-          virtualenvs-create: true
+          python-version: "3.x"
+          cache: "poetry"
 
       - run: poetry add black flake8 isort
       - name: lint
@@ -33,24 +32,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
+          cache: "poetry"
 
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-        with:
-          virtualenvs-create: true
-
-      - name: Cache virtualenv
-        uses: actions/cache@v2
-        with:
-          path: |
-            .venv
-          key: poetry-${{ hashFiles('poetry.lock') }}
+      - name: Install poetry
+        run: pipx install poetry
 
       - name: Install Poetry dependencies
         run: poetry install
@@ -59,4 +50,4 @@ jobs:
         run: poetry run nox --no-venv -e test
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
