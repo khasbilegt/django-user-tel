@@ -47,11 +47,11 @@ jobs:
         run: poetry install
 
       - name: Run tests
-        run:
-          - python makemigrations.py
-          - poetry run coverage run runtests.py
-          - poetry run coverage report
-          - poetry run coverage xml
+        run: |
+          python makemigrations.py
+          poetry run coverage run runtests.py
+          poetry run coverage report
+          poetry run coverage xml
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
