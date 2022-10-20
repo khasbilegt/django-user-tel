@@ -37,12 +37,12 @@ precision = 2
 
 [tool.poetry]
 name = "django-user-tel"
-version = "0.0.1"
+version = "0.1.0"
 description = "Custom, simple Django User model with telephone number as username"
 authors = ["Khasbilegt.TS <khasbilegt.ts@gmail.com>"]
 license = "MIT"
-homepage = "https://github.com/khasbilegt/django-user-email"
-repository = "https://github.com/khasbilegt/django-user-email"
+homepage = "https://github.com/khasbilegt/django-user-tel"
+repository = "https://github.com/khasbilegt/django-user-tel"
 keywords = ["django", "model", "user", "telephone", "phone number", "username", "custom"]
 readme = "README.md"
 classifiers = [
