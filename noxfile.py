@@ -14,6 +14,6 @@ def test(session, django):
         else:
             session.install(f"django=={django}")
         session.run("python", "makemigrations.py")
-        session.run("coverage", "run", "runtests.py")
-        session.run("coverage", "report")
-        session.run("coverage", "xml")
+        session.run("coverage", "run", "runtests.py", external=True)
+        session.run("coverage", "report", external=True)
+        session.run("coverage", "xml", external=True)

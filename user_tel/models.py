@@ -42,12 +42,7 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    tel = models.CharField(
-        min_length=8,
-        max_length=8,
-        unique=True,
-        validators=[RegexValidator(regex=r"^\d{8}$", message="Must be 8 digits")],
-    )
+    tel = models.CharField(unique=True)
     name = models.CharField(max_length=60)
     is_active = models.BooleanField(default=False, db_index=True)
     is_staff = models.BooleanField(default=False)
@@ -60,6 +55,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     class Meta:
         constraints = [
+            models.CheckConstraint(name="valid_tel_value", check=models.Q(tel__regex=r"^\d{8}$")),
             models.UniqueConstraint(name="unique_active_tel", fields=["tel"], condition=models.Q(is_active=True)),
         ]
 
