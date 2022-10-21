@@ -37,7 +37,7 @@ precision = 2
 
 [tool.poetry]
 name = "django-user-tel"
-version = "0.1.0"
+version = "0.2.0"
 description = "Custom, simple Django User model with telephone number as username"
 authors = ["Khasbilegt.TS <khasbilegt.ts@gmail.com>"]
 license = "MIT"

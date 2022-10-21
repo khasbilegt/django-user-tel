@@ -12,7 +12,7 @@ from django.utils import timezone
 class UserManager(BaseUserManager):
     use_in_migrations = True
 
-    def _create_user(self, name, tel, password, **extra_fields):
+    def _create_user(self, tel, name, password, **extra_fields):
         user = self.model(tel=tel, name=name, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
