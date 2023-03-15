@@ -2,7 +2,7 @@ import nox
 
 
 @nox.session
-@nox.parametrize("django", ["3.2", "4.0", "main"])
+@nox.parametrize("django", ["3.2", "4.0", "4.2b1", "main"])
 def test(session, django):
     if django == "main":
         session.run("pip", "install", "https://github.com/django/django/archive/main.tar.gz")
