@@ -1,0 +1,24 @@
+{
+  "editor.fontFamily": "'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.formatOnSave": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/__pycache__": true
+  },
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv",
+  "python.linting.enabled": false,
+  "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true,
+      "source.organizeImports": true
+    }
+  },
+  "python.formatting.provider": "black",
+  "ruff.args": ["--config=pyproject.toml"],
+  "ruff.fixAll": true,
+  "ruff.organizeImports": true,
+  "ruff.path": [".venv/bin/ruff"]
+}

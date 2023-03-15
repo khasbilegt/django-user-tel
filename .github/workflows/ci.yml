@@ -18,17 +18,16 @@ jobs:
           python-version: "3.x"
           cache: "poetry"
 
-      - run: poetry add black flake8 isort
+      - run: poetry lint
       - name: lint
         run: |
-          poetry run flake8 .
+          poetry run ruff check .
           poetry run black . --check
-          poetry run isort .
   test:
     strategy:
       fail-fast: true
       matrix:
-        python-version: ["3.8", "3.9", "3.10"]
+        python-version: ["3.8", "3.9", "3.10", "3.11"]
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository

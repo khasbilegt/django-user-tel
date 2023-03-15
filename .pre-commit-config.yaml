@@ -10,17 +10,8 @@ repos:
         types: [python]
         args: [--config=pyproject.toml]
 
-      - id: isort
-        name: isort
-        stages: [commit]
-        language: system
-        entry: poetry run isort
-        types: [python]
-        args: [-sp=pyproject.toml]
-
-      - id: flake8
-        name: flake8
-        stages: [commit]
-        language: system
-        entry: poetry run flake8
-        types: [python]
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    # Ruff version.
+    rev: "v0.0.256"
+    hooks:
+      - id: ruff

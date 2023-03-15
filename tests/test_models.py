@@ -42,7 +42,7 @@ class UserManagerTestCase(TransactionTestCase):
                         "John Doe",
                         "99112233",
                         "password",
-                        **{_field: False if field == _field else True for _field in self.fields},
+                        **{_field: field != _field for _field in self.fields},  # noqa
                     ),
                     f"Superuser must have {field}=True.",
                 )
@@ -55,6 +55,5 @@ class UserManagerTestCase(TransactionTestCase):
 
     def test_user_tel_validator(self):
         for tel in ("asdfd", "8811109", "823892839829", "89xx8299"):
-            with self.subTest(tel=tel):
-                with self.assertRaises(IntegrityError):
-                    User.objects.create_user(tel, "John Doe", "password", **{field: True for field in self.fields})
+            with self.subTest(tel=tel), self.assertRaises(IntegrityError):
+                User.objects.create_user(tel, "John Doe", "password", **{field: True for field in self.fields})
