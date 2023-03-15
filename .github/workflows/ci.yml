@@ -18,7 +18,7 @@ jobs:
           python-version: "3.x"
           cache: "poetry"
 
-      - run: poetry lint
+      - run: poetry add black ruff
       - name: lint
         run: |
           poetry run ruff check .
